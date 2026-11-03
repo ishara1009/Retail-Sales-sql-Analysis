@@ -125,7 +125,7 @@ def import_all():
             cursor.execute(f"SELECT COUNT(*) FROM `{table}`")
             if cursor.fetchone()[0] != 0:
                 raise ValueError(f"Import stopped: table '{table}' is not empty. No data was changed.")
-        # Transaction එක නිසා සියලු inserts සාර්ථක වුණොත් පමණක් commit වේ.
+        # The transaction commits only when every insert succeeds.
         connection.commit()
         connection.start_transaction()
         statements = {
@@ -138,9 +138,9 @@ def import_all():
         for table, columns in SCHEMAS.items():
             values = [tuple(row[column] for column in columns) for row in data[table]]
             cursor.executemany(statements[table], values)
-        connection.commit()  # commit: validated rows සියල්ල database එකේ ස්ථිර කරයි.
+        connection.commit()  # Commit makes all validated rows permanent.
     except Exception:
-        connection.rollback()  # rollback: partial import එකක් ඉතිරි වීම වළක්වයි.
+        connection.rollback()  # Rollback prevents a partial import from remaining.
         raise
     finally:
         cursor.close()

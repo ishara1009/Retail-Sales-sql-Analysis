@@ -21,7 +21,7 @@ def add_customer(name, email, city):
     connection = get_connection()
     cursor = connection.cursor()
     try:
-        # %s placeholders user input එක SQL code එකක් වීම වළක්වයි.
+        # %s placeholders prevent user input from being treated as SQL code.
         cursor.execute("INSERT INTO customers (customer_name, email, city) VALUES (%s, %s, %s)", (name, email, city))
         connection.commit()
         return cursor.lastrowid
@@ -70,7 +70,7 @@ def delete_customer(customer_id):
         cursor.execute("SELECT customer_id FROM customers WHERE customer_id=%s", (customer_id,))
         if not cursor.fetchone():
             raise LookupError(f"Customer {customer_id} does not exist.")
-        # Foreign key සම්බන්ධ order history එක අහම්බෙන් මැකීම වළක්වයි.
+        # The foreign key helps prevent accidental deletion of order history.
         cursor.execute("SELECT COUNT(*) FROM orders WHERE customer_id=%s", (customer_id,))
         if cursor.fetchone()[0]:
             raise ValueError("This customer has orders and cannot be deleted.")

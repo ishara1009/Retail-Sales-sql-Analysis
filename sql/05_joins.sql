@@ -17,7 +17,7 @@ WHERE o.order_id IS NULL ORDER BY c.customer_id;
 SELECT p.product_id, p.product_name FROM products p
 LEFT JOIN order_items oi ON oi.product_id = p.product_id
 WHERE oi.order_item_id IS NULL ORDER BY p.product_id;
--- Multi-table order details. JOIN එකෙන් related tables එක result එකකට සම්බන්ධ කරයි.
+-- Multi-table order details: JOIN combines related tables into one result.
 SELECT o.order_id, o.order_date, c.customer_name, p.product_name,
        oi.quantity, oi.unit_price, oi.quantity * oi.unit_price AS line_total
 FROM orders o JOIN customers c ON c.customer_id = o.customer_id

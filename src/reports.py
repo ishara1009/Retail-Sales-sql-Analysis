@@ -37,7 +37,7 @@ def export_reports():
             cursor.execute(load_report_query(section))
             rows = cursor.fetchall()
             columns = [column[0] for column in cursor.description]
-            # Decimal values float බවට හරවන්නේ නැතිව CSV එකට ලියයි.
+            # Write Decimal values to CSV without converting them to float.
             frame = pd.DataFrame(rows, columns=columns)
             path = REPORT_DIR / filename
             frame.to_csv(path, index=False)

@@ -37,12 +37,12 @@ def create_order(customer_id, items):
                        (customer_id, date.today(), "pending"))
         order_id = cursor.lastrowid
         for product_id, quantity in clean_items:
-            # Historical price: අද catalog price එක order item එකේ copy කර තබයි.
+            # Historical price: copy today's catalog price into the order item.
             cursor.execute("INSERT INTO order_items (order_id, product_id, quantity, unit_price) VALUES (%s, %s, %s, %s)",
                            (order_id, product_id, quantity, prices[product_id]))
         connection.commit(); return order_id
     except Exception:
-        connection.rollback()  # එක item එකක් fail වුණත් මුළු order එකම rollback වේ.
+        connection.rollback()  # Roll back the entire order if any item fails.
         raise
     finally:
         cursor.close(); connection.close()
