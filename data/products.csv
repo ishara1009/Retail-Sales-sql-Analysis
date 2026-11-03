@@ -1,0 +1,31 @@
+product_id,product_name,category_id,unit_price
+1,Laptop Basic,1,145000.00
+2,Laptop Pro,1,245000.00
+3,Desktop Basic,1,125000.00
+4,Monitor 24 inch,1,42500.00
+5,Keyboard,1,3500.00
+6,Wireless Mouse,1,2800.00
+7,USB C Charger,2,4500.00
+8,Power Bank,2,8500.00
+9,USB C Cable,2,1500.00
+10,Phone Stand,2,1200.00
+11,Screen Protector,2,900.00
+12,Phone Case,2,1800.00
+13,Headphones,3,6500.00
+14,Wireless Earbuds,3,12500.00
+15,Bluetooth Speaker,3,9500.00
+16,USB Microphone,3,14500.00
+17,Sound Bar,3,32500.00
+18,Wired Earphones,3,2200.00
+19,USB Drive 64GB,4,2400.00
+20,SSD 512GB,4,16500.00
+21,SSD 1TB,4,28500.00
+22,External HDD 1TB,4,22500.00
+23,Memory Card 128GB,4,4500.00
+24,Card Reader,4,1800.00
+25,WiFi Router,5,12500.00
+26,Ethernet Cable,5,1600.00
+27,USB WiFi Adapter,5,3800.00
+28,Network Switch,5,8500.00
+29,WiFi Extender,5,11500.00
+30,Mesh Router,5,38500.00
